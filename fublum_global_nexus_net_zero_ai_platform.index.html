@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fublum Global Nexus Ltd | AI-Powered Net Zero Energy Platform for Africa & Globally</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js for dynamic energy analytics -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            400: '#4ade80',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            900: '#14532d',
+                            950: '#052e16',
+                        },
+                        cyber: {
+                            blue: '#0ea5e9',
+                            dark: '#020617',
+                            card: '#0f172a',
+                            border: '#1e293b'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #030712;
+            color: #f8fafc;
+            overflow-x: hidden;
+        }
+
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-glow {
+            box-shadow: 0 0 40px -10px rgba(34, 197, 94, 0.25);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #4ade80 0%, #38bdf8 50%, #a855f7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gradient-border {
+            position: relative;
+            border-radius: 1rem;
+            background: linear-gradient(135deg, rgba(34,197,94,0.3), rgba(14,165,233,0.1));
+            padding: 1px;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #030712;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #22c55e;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-brand-500 selection:text-black">
+
+    <!-- Navigation -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-panel border-b border-slate-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-500 to-cyber-blue p-0.5 shadow-lg shadow-brand-500/20 group-hover:scale-105 transition-transform duration-300">
+                    <div class="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
+                        <i data-lucide="zap" class="w-5 h-5 text-brand-400"></i>
+                    </div>
+                </div>
+                <div>
+                    <span class="text-xl font-bold tracking-tight text-white block leading-none">FUBLUM</span>
+                    <span class="text-[10px] tracking-widest text-brand-400 uppercase font-semibold">Global Nexus Ltd</span>
+                </div>
+            </a>
+
+            <!-- Desktop Links -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+                <a href="#platform" class="hover:text-brand-400 transition-colors">Platform Engine</a>
+                <a href="#simulator" class="hover:text-brand-400 transition-colors flex items-center gap-1.5">
+                    <span>Aether AI Simulator</span>
+                    <span class="px-1.5 py-0.5 text-[10px] bg-brand-500/20 text-brand-300 rounded-full border border-brand-500/30 font-semibold">Live</span>
+                </a>
+                <a href="#africa-focus" class="hover:text-brand-400 transition-colors">Africa & Global Focus</a>
+                <a href="#roadmap" class="hover:text-brand-400 transition-colors">5-Stage Roadmap</a>
+                <a href="#founder" class="hover:text-brand-400 transition-colors">Leadership</a>
+                <a href="#investors" class="hover:text-brand-400 transition-colors">Investor Hub</a>
+            </nav>
+
+            <!-- Actions -->
+            <div class="hidden sm:flex items-center gap-4">
+                <button onclick="scrollToSimulator()" class="px-4 py-2 text-sm font-medium text-slate-300 hover:text-white transition-colors">
+                    Test Engine
+                </button>
+                <button onclick="openDemoModal()" class="relative group overflow-hidden rounded-xl bg-gradient-to-r from-brand-500 to-emerald-600 px-5 py-2.5 text-sm font-semibold text-slate-950 shadow-lg shadow-brand-500/25 transition-all duration-300 hover:shadow-brand-500/40 hover:scale-[1.02]">
+                    <span class="relative z-10 flex items-center gap-2">
+                        <span>Book AI Audit</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </span>
+                </button>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button id="mobileMenuBtn" class="md:hidden p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobileMenu" class="hidden md:hidden border-b border-slate-800 bg-slate-950 px-4 pt-2 pb-6 space-y-3">
+            <a href="#platform" class="block py-2 text-slate-300 hover:text-brand-400">Platform Engine</a>
+            <a href="#simulator" class="block py-2 text-slate-300 hover:text-brand-400">AI Simulator</a>
+            <a href="#africa-focus" class="block py-2 text-slate-300 hover:text-brand-400">Africa & Global Focus</a>
+            <a href="#roadmap" class="block py-2 text-slate-300 hover:text-brand-400">5-Stage Roadmap</a>
+            <a href="#founder" class="block py-2 text-slate-300 hover:text-brand-400">Leadership</a>
+            <a href="#investors" class="block py-2 text-slate-300 hover:text-brand-400">Investor Hub</a>
+            <div class="pt-4 flex flex-col gap-2">
+                <button onclick="openDemoModal()" class="w-full text-center py-3 bg-brand-500 text-slate-950 font-semibold rounded-xl">
+                    Book AI Audit
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden">
+        <!-- Background Ambient Glows -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-500/10 rounded-full blur-[140px] pointer-events-none"></div>
+        <div class="absolute top-1/3 right-10 w-[400px] h-[400px] bg-cyber-blue/10 rounded-full blur-[120px] pointer-events-none"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-4xl mx-auto">
+                <!-- Top Badge -->
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-900/90 border border-brand-500/30 text-brand-400 text-xs sm:text-sm font-medium mb-8 backdrop-blur-md animate-pulse">
+                    <span class="w-2 h-2 rounded-full bg-brand-400"></span>
+                    <span>FUBLUM GLOBAL NEXUS • DECARBONIZING AFRICA & GLOBAL INFRASTRUCTURE</span>
+                </div>
+
+                <!-- Headline -->
+                <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[1.1] mb-6">
+                    Your Autonomous <span class="gradient-text">Aether AI</span> Digital Energy Engineer for Buildings
+                </h1>
+
+                <!-- Subheading -->
+                <p class="text-lg sm:text-xl text-slate-400 mb-10 max-w-3xl mx-auto font-normal leading-relaxed">
+                    Fublum Global Nexus Ltd leverages Aether AI to ingest building operations, diagnose energy waste, model solar microgrids, generate bankable Net-Zero roadmaps, and execute turn-key clean energy retrofits across Africa and worldwide.
+                </p>
+
+                <!-- Hero CTAs -->
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+                    <button onclick="scrollToSimulator()" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-brand-500 to-emerald-600 text-slate-950 font-bold text-base shadow-xl shadow-brand-500/25 hover:shadow-brand-500/40 hover:scale-[1.02] transition-all flex items-center justify-center gap-3">
+                        <i data-lucide="cpu" class="w-5 h-5"></i>
+                        <span>Launch Regional AI Assessment</span>
+                    </button>
+                    <button onclick="openPitchBriefModal()" class="w-full sm:w-auto px-8 py-4 rounded-xl glass-panel hover:bg-slate-800/80 text-white font-semibold text-base border border-slate-700/80 transition-all flex items-center justify-center gap-2">
+                        <i data-lucide="file-text" class="w-5 h-5 text-brand-400"></i>
+                        <span>Investor & Partnership Pitch</span>
+                    </button>
+                </div>
+
+                <!-- Key Metrics Grid -->
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 pt-10 border-t border-slate-800/80 text-left">
+                    <div class="glass-panel p-5 rounded-2xl">
+                        <div class="text-2xl sm:text-3xl font-extrabold text-white mb-1">54 Nations</div>
+                        <div class="text-xs sm:text-sm text-slate-400">African Regional Decarbonization Scope</div>
+                    </div>
+                    <div class="glass-panel p-5 rounded-2xl">
+                        <div class="text-2xl sm:text-3xl font-extrabold text-brand-400 mb-1">40%–65%</div>
+                        <div class="text-xs sm:text-sm text-slate-400">Avg. Operational Energy Reduction</div>
+                    </div>
+                    <div class="glass-panel p-5 rounded-2xl">
+                        <div class="text-2xl sm:text-3xl font-extrabold text-cyber-blue mb-1">Solar & Grid</div>
+                        <div class="text-xs sm:text-sm text-slate-400">Hybrid Microgrid Optimization</div>
+                    </div>
+                    <div class="glass-panel p-5 rounded-2xl">
+                        <div class="text-2xl sm:text-3xl font-extrabold text-emerald-400 mb-1">Bankable</div>
+                        <div class="text-xs sm:text-sm text-slate-400">Automated Carbon & ESG Financing</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dedicated Africa Decarbonization Strategic Pillar -->
+    <section id="africa-focus" class="py-20 bg-slate-950/80 border-t border-slate-900 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-6 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-semibold">
+                        <i data-lucide="globe" class="w-3.5 h-3.5"></i>
+                        Strategic Core Focus: Africa & Emerging Global Markets
+                    </div>
+                    <h2 class="text-3xl sm:text-5xl font-extrabold text-white leading-tight">
+                        Powering Africa's Leapfrog to Net-Zero Infrastructure
+                    </h2>
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                        Africa stands at the epicenter of the global energy transition. With rapid urbanization, abundant solar radiation, and growing industrial demands, African commercial estates, industrial hubs, and public facilities have an unprecedented opportunity to bypass legacy fossil infrastructure.
+                    </p>
+                    <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
+                        Fublum Global Nexus Ltd bridges the gap between high-yield renewable energy design, local thermal climate dynamics, and bankable international climate finance to accelerate decarbonization across all 54 African countries and global markets.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4 pt-2">
+                        <div class="p-4 rounded-xl glass-panel border border-brand-500/30">
+                            <h4 class="text-brand-400 font-bold text-sm mb-1">High Irradiance Yield</h4>
+                            <p class="text-xs text-slate-400">Optimizing rooftop & microgrid solar PV across Sub-Saharan & North African solar belts.</p>
+                        </div>
+                        <div class="p-4 rounded-xl glass-panel border border-cyber-blue/30">
+                            <h4 class="text-cyber-blue font-bold text-sm mb-1">Grid Resiliency & Off-Grid</h4>
+                            <p class="text-xs text-slate-400">Integrating battery storage to eliminate reliance on diesel generators and volatile power grids.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Strategic Regions Grid Map Cards -->
+                <div class="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="glass-panel p-5 rounded-2xl border-l-4 border-l-brand-500 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <h4 class="text-white font-bold text-sm">West Africa</h4>
+                            <span class="text-[10px] font-mono text-brand-400">Nigeria, Ghana, Senegal...</span>
+                        </div>
+                        <p class="text-xs text-slate-400">Commercial hubs, industrial ports, solar microgrid integration, HVAC cooling efficiency.</p>
+                    </div>
+
+                    <div class="glass-panel p-5 rounded-2xl border-l-4 border-l-cyber-blue space-y-2">
+                        <div class="flex items-center justify-between">
+                            <h4 class="text-white font-bold text-sm">East Africa</h4>
+                            <span class="text-[10px] font-mono text-cyber-blue">Kenya, Ethiopia, Tanzania...</span>
+                        </div>
+                        <p class="text-xs text-slate-400">Geothermal & solar hybrid integration, tea/agricultural processing decarbonization.</p>
+                    </div>
+
+                    <div class="glass-panel p-5 rounded-2xl border-l-4 border-l-amber-400 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <h4 class="text-white font-bold text-sm">Southern Africa</h4>
+                            <span class="text-[10px] font-mono text-amber-400">South Africa, Namibia...</span>
+                        </div>
+                        <p class="text-xs text-slate-400">Mining facilities, manufacturing hubs, wheeling power contracts, battery peak shaving.</p>
+                    </div>
+
+                    <div class="glass-panel p-5 rounded-2xl border-l-4 border-l-purple-400 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <h4 class="text-white font-bold text-sm">North & Central Africa</h4>
+                            <span class="text-[10px] font-mono text-purple-400">Egypt, Morocco, DRC...</span>
+                        </div>
+                        <p class="text-xs text-slate-400">Large-scale solar thermal, industrial energy auditing, and green hydrogen integration.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5-Stage Core Platform Architecture -->
+    <section id="roadmap" class="py-24 bg-slate-950/60 border-y border-slate-900 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brand-400 font-semibold text-sm tracking-wider uppercase">End-to-End Intelligence</span>
+                <h2 class="text-3xl sm:text-5xl font-bold text-white mt-2 mb-4">The Aether AI Net Zero Engine</h2>
+                <p class="text-slate-400">How our digital ecosystem transforms raw asset data into verified, zero-carbon financial assets across Africa and world regions.</p>
+            </div>
+
+            <!-- Stages Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-6">
+                <!-- Stage 1 -->
+                <div class="glass-panel p-6 rounded-2xl border-t-2 border-t-brand-400 relative flex flex-col justify-between hover:translate-y-[-4px] transition-transform duration-300">
+                    <div>
+                        <div class="w-10 h-10 rounded-xl bg-brand-500/10 text-brand-400 flex items-center justify-center font-bold text-lg mb-4">01</div>
+                        <h3 class="text-lg font-bold text-white mb-2">Ingest Data</h3>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            Continuous Aether AI harvesting of BIM models, regional satellite thermal data, utility smart meters, local grid tariffs, and BMS telemetry.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-800 text-[11px] text-brand-300 font-mono">
+                        ✓ Multi-source API pipeline
+                    </div>
+                </div>
+
+                <!-- Stage 2 -->
+                <div class="glass-panel p-6 rounded-2xl border-t-2 border-t-cyber-blue relative flex flex-col justify-between hover:translate-y-[-4px] transition-transform duration-300">
+                    <div>
+                        <div class="w-10 h-10 rounded-xl bg-cyber-blue/10 text-cyber-blue flex items-center justify-center font-bold text-lg mb-4">02</div>
+                        <h3 class="text-lg font-bold text-white mb-2">Diagnose Drag</h3>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            Deep machine learning identifies cooling loss, diesel generator reliance, HVAC drift, and calculates Scope 1, 2 & 3 carbon baselines.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-800 text-[11px] text-cyber-blue font-mono">
+                        ✓ AI Digital Twin Physics
+                    </div>
+                </div>
+
+                <!-- Stage 3 -->
+                <div class="glass-panel p-6 rounded-2xl border-t-2 border-t-purple-400 relative flex flex-col justify-between hover:translate-y-[-4px] transition-transform duration-300">
+                    <div>
+                        <div class="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center font-bold text-lg mb-4">03</div>
+                        <h3 class="text-lg font-bold text-white mb-2">Model Scenarios</h3>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            Aether AI models high-yield retrofits: solar PV microgrids, BESS storage, heat pumps, passive solar cooling, and envelope optimization.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-800 text-[11px] text-purple-300 font-mono">
+                        ✓ High-Irradiance Simulations
+                    </div>
+                </div>
+
+                <!-- Stage 4 -->
+                <div class="glass-panel p-6 rounded-2xl border-t-2 border-t-amber-400 relative flex flex-col justify-between hover:translate-y-[-4px] transition-transform duration-300">
+                    <div>
+                        <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center font-bold text-lg mb-4">04</div>
+                        <h3 class="text-lg font-bold text-white mb-2">Investment Case</h3>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            Automate bankable business cases: CAPEX/OPEX modeling, ROI payback timelines, fuel offset savings, and audit-ready ESG reporting.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-800 text-[11px] text-amber-300 font-mono">
+                        ✓ Automated Bankable Pitch
+                    </div>
+                </div>
+
+                <!-- Stage 5 -->
+                <div class="glass-panel p-6 rounded-2xl border-t-2 border-t-emerald-400 relative flex flex-col justify-between hover:translate-y-[-4px] transition-transform duration-300">
+                    <div>
+                        <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-bold text-lg mb-4">05</div>
+                        <h3 class="text-lg font-bold text-white mb-2">Execute & Monitor</h3>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            Connect directly to green financing (ESCOs, green bonds, African climate funds), EPC execution, and real-time operational AI tracking.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-800 text-[11px] text-emerald-300 font-mono">
+                        ✓ Closed-Loop Delivery
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive AI Assessment Sandbox -->
+    <section id="simulator" class="py-24 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-start justify-between gap-8 mb-12">
+                <div>
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-500/10 text-brand-400 text-xs font-semibold mb-3">
+                        <i data-lucide="cpu" class="w-3.5 h-3.5"></i>
+                        Aether AI Digital Energy Engine
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Aether AI Assessment & Net-Zero Diagnostic</h2>
+                    <p class="text-slate-400 mt-2 max-w-2xl">
+                        Select your region (covering all African regions & key countries, alongside global zones) to simulate energy health and net-zero potential.
+                    </p>
+                </div>
+                <!-- Preset Buttons -->
+                <div class="flex flex-wrap gap-2">
+                    <button onclick="loadPreset('office')" id="preset-office" class="px-4 py-2 rounded-xl text-xs font-semibold glass-panel border border-brand-500/40 text-brand-400 hover:bg-slate-800 transition">
+                        🏢 Commercial HQ
+                    </button>
+                    <button onclick="loadPreset('industrial')" id="preset-industrial" class="px-4 py-2 rounded-xl text-xs font-semibold glass-panel border border-slate-800 text-slate-300 hover:bg-slate-800 transition">
+                        🏭 Logistics & Industrial
+                    </button>
+                    <button onclick="loadPreset('campus')" id="preset-campus" class="px-4 py-2 rounded-xl text-xs font-semibold glass-panel border border-slate-800 text-slate-300 hover:bg-slate-800 transition">
+                        🎓 Campus / Facility
+                    </button>
+                </div>
+            </div>
+
+            <!-- Main Interactive App Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <!-- Left Input Controls Panel (Data Ingestion) -->
+                <div class="lg:col-span-5 glass-panel p-6 sm:p-8 rounded-3xl border border-slate-800/80 space-y-5">
+                    <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-lg bg-brand-500/20 text-brand-400 flex items-center justify-center">
+                                <i data-lucide="sliders" class="w-4 h-4"></i>
+                            </div>
+                            <h3 class="font-bold text-white">Asset & Infrastructure Telemetry</h3>
+                        </div>
+                        <span class="text-[11px] text-brand-400 font-mono">Stage 1: Ingestion</span>
+                    </div>
+
+                    <!-- Building Type & Region Dropdown (Includes All African Regions + Global) -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div>
+                            <label class="block text-[11px] font-medium text-slate-300 mb-1">Building / Infrastructure Type</label>
+                            <select id="assetType" onchange="updateSimulation()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-500">
+                                <option value="Commercial Office Tower">Commercial Office</option>
+                                <option value="Industrial Logistics Park">Industrial Facility</option>
+                                <option value="University Campus">Campus Facility</option>
+                                <option value="Hotel & Hospitality">Hospitality / Hotel</option>
+                                <option value="Hospital & Healthcare">Healthcare Facility</option>
+                                <option value="Telecom / Data Center">Data Center / Telecom Hub</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-medium text-slate-300 mb-1">Region / Country Focus</label>
+                            <select id="locationRegion" onchange="updateSimulation()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-500">
+                                <optgroup label="🌍 Africa: West Africa">
+                                    <option value="West Africa - Nigeria" selected>Nigeria (Lagos, Abuja, Port Harcourt)</option>
+                                    <option value="West Africa - Ghana">Ghana (Accra, Kumasi)</option>
+                                    <option value="West Africa - Senegal & Ivory Coast">Senegal, Ivory Coast & Francophone West</option>
+                                    <option value="West Africa - Other Regions">Other West Africa (Liberia, Sierra Leone, Gambia...)</option>
+                                </optgroup>
+                                <optgroup label="🌍 Africa: East Africa">
+                                    <option value="East Africa - Kenya">Kenya (Nairobi, Mombasa)</option>
+                                    <option value="East Africa - Ethiopia">Ethiopia (Addis Ababa)</option>
+                                    <option value="East Africa - Tanzania & Uganda">Tanzania, Uganda, Rwanda & Burundi</option>
+                                    <option value="East Africa - Horn & Islands">Horn of Africa & Indian Ocean Islands</option>
+                                </optgroup>
+                                <optgroup label="🌍 Africa: Southern Africa">
+                                    <option value="Southern Africa - South Africa">South Africa (Johannesburg, Cape Town, Durban)</option>
+                                    <option value="Southern Africa - Namibia & Botswana">Namibia, Botswana & Zambia</option>
+                                    <option value="Southern Africa - Mozambique & Zimbabwe">Mozambique, Zimbabwe, Malawi, Angola</option>
+                                </optgroup>
+                                <optgroup label="🌍 Africa: North Africa">
+                                    <option value="North Africa - Egypt">Egypt (Cairo, Alexandria)</option>
+                                    <option value="North Africa - Morocco & Tunisia">Morocco, Tunisia, Algeria & Libya</option>
+                                </optgroup>
+                                <optgroup label="🌍 Africa: Central Africa">
+                                    <option value="Central Africa - DRC & Cameroon">DR Congo, Cameroon, Gabon, Republic of Congo</option>
+                                </optgroup>
+                                <optgroup label="🌐 Global Regions">
+                                    <option value="UK & Northern Europe">UK & Northern Europe</option>
+                                    <option value="Southern Europe & Med">Southern Europe & Mediterranean</option>
+                                    <option value="North America">North America (US & Canada)</option>
+                                    <option value="Middle East & Gulf">Middle East & Gulf Co-operation Council</option>
+                                    <option value="Asia-Pacific & India">Asia-Pacific & South Asia</option>
+                                    <option value="Latin America">Latin America & Caribbean</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Floor Area Slider -->
+                    <div>
+                        <div class="flex justify-between text-xs mb-1">
+                            <span class="text-slate-300">Total Floor Area</span>
+                            <span id="areaVal" class="text-brand-400 font-bold">25,000 m²</span>
+                        </div>
+                        <input type="range" id="areaInput" min="2000" max="100000" step="1000" value="25000" oninput="updateSimulation()" class="w-full accent-brand-500 cursor-pointer">
+                    </div>
+
+                    <!-- Electricity Spend & Consumption -->
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <div class="flex justify-between text-[11px] mb-1">
+                                <span class="text-slate-300">Monthly Bill (£ / $)</span>
+                                <span id="billVal" class="text-brand-400 font-bold">£32,000</span>
+                            </div>
+                            <input type="range" id="billInput" min="5000" max="150000" step="2500" value="32000" oninput="updateSimulation()" class="w-full accent-brand-500 cursor-pointer">
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-[11px] mb-1">
+                                <span class="text-slate-300">Monthly kWh</span>
+                                <span id="kwhVal" class="text-brand-400 font-bold">128,000 kWh</span>
+                            </div>
+                            <input type="range" id="kwhInput" min="20000" max="600000" step="10000" value="128000" oninput="updateSimulation()" class="w-full accent-brand-500 cursor-pointer">
+                        </div>
+                    </div>
+
+                    <!-- Operating Hours & Primary Systems -->
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label class="block text-[11px] font-medium text-slate-300 mb-1">Operating Hours</label>
+                            <select id="operatingHours" onchange="updateSimulation()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-500">
+                                <option value="12 hrs/day (Standard)">12 hrs/day (Standard)</option>
+                                <option value="16 hrs/day (Extended)">16 hrs/day (Extended)</option>
+                                <option value="24/7 Continuous Ops">24/7 Continuous Ops</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-medium text-slate-300 mb-1">HVAC / Cooling System</label>
+                            <select id="hvacType" onchange="updateSimulation()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-500">
+                                <option value="Chillers & DX Cooling">Chillers & DX Cooling</option>
+                                <option value="Centralized VRF">Centralized VRF System</option>
+                                <option value="Legacy Split AC Units">Legacy Split AC Units</option>
+                                <option value="Mechanical Ventilation Only">Mechanical Ventilation</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Existing Assets Checkboxes -->
+                    <div>
+                        <span class="block text-[11px] font-medium text-slate-400 mb-2">Existing On-Site Power Assets</span>
+                        <div class="grid grid-cols-2 gap-2 text-xs">
+                            <label class="flex items-center gap-2 p-2 rounded-lg bg-slate-900/80 border border-slate-800 cursor-pointer">
+                                <input type="checkbox" id="existSolar" onchange="updateSimulation()" class="accent-brand-500">
+                                <span class="text-slate-300 text-[11px]">Rooftop Solar</span>
+                            </label>
+                            <label class="flex items-center gap-2 p-2 rounded-lg bg-slate-900/80 border border-slate-800 cursor-pointer">
+                                <input type="checkbox" id="existGen" checked onchange="updateSimulation()" class="accent-brand-500">
+                                <span class="text-slate-300 text-[11px]">Diesel / Heavy Gas Gen</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Potential Interventions Toggle Grid -->
+                    <div class="pt-3 border-t border-slate-800">
+                        <span class="block text-[11px] font-mono text-cyber-blue uppercase mb-2">Select Net-Zero Interventions To Model</span>
+                        <div class="grid grid-cols-2 gap-2 text-xs">
+                            <label class="flex items-center gap-2 p-2 rounded-lg bg-slate-900/80 border border-slate-800 cursor-pointer hover:border-brand-500/50">
+                                <input type="checkbox" id="intSolar" checked onchange="updateSimulation()" class="accent-brand-500">
+                                <span class="text-slate-200 text-[11px]">☑ High-Yield Solar PV</span>
+                            </label>
+                            <label class="flex items-center gap-2 p-2 rounded-lg bg-slate-900/80 border border-slate-800 cursor-pointer hover:border-brand-500/50">
+                                <input type="checkbox" id="intBattery" checked onchange="updateSimulation()" class="accent-brand-500">
+                                <span class="text-slate-200 text-[11px]">☑ Battery Microgrid</span>
+                            </label>
+                            <label class="flex items-center gap-2 p-2 rounded-lg bg-slate-900/80 border border-slate-800 cursor-pointer hover:border-brand-500/50">
+                                <input type="checkbox" id="intLighting" checked onchange="updateSimulation()" class="accent-brand-500">
+                                <span class="text-slate-200 text-[11px]">☑ Smart LED Upgrade</span>
+                            </label>
+                            <label class="flex items-center gap-2 p-2 rounded-lg bg-slate-900/80 border border-slate-800 cursor-pointer hover:border-brand-500/50">
+                                <input type="checkbox" id="intWater" checked onchange="updateSimulation()" class="accent-brand-500">
+                                <span class="text-slate-200 text-[11px]">☑ Solar Water Heating</span>
+                            </label>
+                            <label class="flex items-center gap-2 p-2 rounded-lg bg-slate-900/80 border border-slate-800 cursor-pointer hover:border-brand-500/50">
+                                <input type="checkbox" id="intHvac" checked onchange="updateSimulation()" class="accent-brand-500">
+                                <span class="text-slate-200 text-[11px]">☑ HVAC Optimization</span>
+                            </label>
+                            <label class="flex items-center gap-2 p-2 rounded-lg bg-slate-900/80 border border-slate-800 cursor-pointer hover:border-brand-500/50">
+                                <input type="checkbox" id="intSmart" checked onchange="updateSimulation()" class="accent-brand-500">
+                                <span class="text-slate-200 text-[11px]">☑ Smart Energy Controls</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Output Panel: Energy Health Report & Net Zero Roadmap -->
+                <div class="lg:col-span-7 space-y-6">
+                    <!-- ENERGY HEALTH REPORT -->
+                    <div class="glass-panel p-6 sm:p-7 rounded-3xl border border-slate-800 relative overflow-hidden">
+                        <div class="flex items-center justify-between border-b border-slate-800/80 pb-4 mb-4">
+                            <div>
+                                <span class="text-[10px] font-mono text-emerald-400 uppercase tracking-widest block">Aether AI Regional Diagnostic Output</span>
+                                <h4 class="text-xl font-extrabold text-white flex items-center gap-2">
+                                    <i data-lucide="activity" class="w-5 h-5 text-brand-400"></i>
+                                    ENERGY HEALTH REPORT
+                                </h4>
+                            </div>
+                            <span id="repBadge" class="px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs font-semibold">
+                                Inefficiency Detected
+                            </span>
+                        </div>
+
+                        <!-- Top Diagnostic Metrics -->
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-6">
+                            <div class="p-3.5 rounded-2xl bg-slate-900/80 border border-slate-800">
+                                <span class="text-[11px] text-slate-400 block mb-1">Monthly Energy Use</span>
+                                <span id="repKwh" class="text-lg font-bold text-white">128,000 kWh/mo</span>
+                            </div>
+                            <div class="p-3.5 rounded-2xl bg-slate-900/80 border border-slate-800">
+                                <span class="text-[11px] text-slate-400 block mb-1">Estimated Energy Waste</span>
+                                <span id="repWaste" class="text-lg font-bold text-rose-400">34% Waste</span>
+                            </div>
+                            <div class="p-3.5 rounded-2xl bg-slate-900/80 border border-slate-800 col-span-2 sm:col-span-1">
+                                <span class="text-[11px] text-slate-400 block mb-1">Carbon Intensity</span>
+                                <span id="repCarbon" class="text-lg font-bold text-amber-400">645 tCO₂e/yr</span>
+                            </div>
+                        </div>
+
+                        <!-- Largest Energy Loads List -->
+                        <div class="mb-2">
+                            <h5 class="text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Primary Energy Load Contributors (Regional Model):</h5>
+                            <div id="loadBreakdownGrid" class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
+                                <!-- Dynamic Load Breakdown -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- NET-ZERO ROADMAP -->
+                    <div class="glass-panel p-6 sm:p-7 rounded-3xl border border-slate-800 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <span class="text-[10px] font-mono text-brand-400 uppercase tracking-widest block">Aether AI Prescriptive Analytics</span>
+                                <h4 class="text-xl font-extrabold text-white flex items-center gap-2">
+                                    <i data-lucide="compass" class="w-5 h-5 text-brand-400"></i>
+                                    NET-ZERO ROADMAP
+                                </h4>
+                            </div>
+                            <span class="text-xs text-brand-400 font-bold bg-brand-500/10 px-3 py-1 rounded-full border border-brand-500/30">
+                                ROI Payback: <span id="resPayback">2.4 Years</span>
+                            </span>
+                        </div>
+
+                        <!-- Dynamic Roadmap Impact Statement -->
+                        <div class="p-4 rounded-2xl bg-slate-900/90 border border-brand-500/30">
+                            <p id="roadmapStatement" class="text-xs sm:text-sm text-slate-200 leading-relaxed">
+                                Generating custom prescriptive roadmap...
+                            </p>
+                        </div>
+
+                        <!-- Interactive Chart canvas -->
+                        <div class="h-48 w-full pt-2">
+                            <canvas id="energyChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- TURNKEY EXECUTION: WOULD YOU LIKE US TO IMPLEMENT IT? -->
+                    <div class="p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-slate-900 via-slate-900 to-emerald-950/80 border border-brand-500/40 relative overflow-hidden">
+                        <div class="relative z-10 space-y-4">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                                <div>
+                                    <span class="text-[10px] font-mono text-brand-400 uppercase tracking-widest block">Turn-Key Africa & Global Execution</span>
+                                    <h4 class="text-2xl font-extrabold text-white">Would you like us to implement it?</h4>
+                                </div>
+                                <button onclick="openDemoModal()" class="px-6 py-3 rounded-xl bg-gradient-to-r from-brand-500 to-emerald-500 text-slate-950 font-bold text-sm hover:scale-[1.02] transition shadow-lg shadow-brand-500/25 shrink-0">
+                                    Request Full Proposal & Audit
+                                </button>
+                            </div>
+
+                            <p class="text-xs text-slate-300">
+                                Fublum Global Nexus Ltd provides complete end-to-end delivery in African regional markets and globally, eliminating contractor fragmentation:
+                            </p>
+
+                            <!-- 6-Step Value Chain -->
+                            <div class="grid grid-cols-2 sm:grid-cols-6 gap-2 text-center pt-2">
+                                <div class="p-2 rounded-xl bg-slate-900/80 border border-slate-800 text-[11px]">
+                                    <div class="text-brand-400 font-bold mb-0.5">1. Assessment</div>
+                                    <span class="text-[10px] text-slate-400">AI Data Ingestion</span>
+                                </div>
+                                <div class="p-2 rounded-xl bg-slate-900/80 border border-slate-800 text-[11px]">
+                                    <div class="text-brand-400 font-bold mb-0.5">2. Design</div>
+                                    <span class="text-[10px] text-slate-400">Civil & Solar Eng.</span>
+                                </div>
+                                <div class="p-2 rounded-xl bg-slate-900/80 border border-slate-800 text-[11px]">
+                                    <div class="text-brand-400 font-bold mb-0.5">3. Financing</div>
+                                    <span class="text-[10px] text-slate-400">ESCO / Green Bond</span>
+                                </div>
+                                <div class="p-2 rounded-xl bg-slate-900/80 border border-slate-800 text-[11px]">
+                                    <div class="text-brand-400 font-bold mb-0.5">4. Installation</div>
+                                    <span class="text-[10px] text-slate-400">Turn-key EPC</span>
+                                </div>
+                                <div class="p-2 rounded-xl bg-slate-900/80 border border-slate-800 text-[11px]">
+                                    <div class="text-brand-400 font-bold mb-0.5">5. Monitoring</div>
+                                    <span class="text-[10px] text-slate-400">IoT Telemetry</span>
+                                </div>
+                                <div class="p-2 rounded-xl bg-slate-900/80 border border-slate-800 text-[11px]">
+                                    <div class="text-brand-400 font-bold mb-0.5">6. Optimisation</div>
+                                    <span class="text-[10px] text-slate-400">Aether AI Loop</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Founder & Technical Pedigree Section -->
+    <section id="founder" class="py-24 bg-slate-950/80 border-t border-slate-900 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Left Info -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-500/10 text-brand-400 text-xs font-semibold">
+                        <i data-lucide="award" class="w-3.5 h-3.5"></i>
+                        Founder & Strategic Leadership
+                    </div>
+                    
+                    <h2 class="text-3xl sm:text-5xl font-extrabold text-white leading-tight">
+                        Rooted in Civil Engineering. Committed to African & Global Decarbonization.
+                    </h2>
+
+                    <p class="text-slate-300 text-base leading-relaxed">
+                        <strong class="text-white">Fublum Global Nexus Ltd</strong> was established to solve the built environment's toughest energy and carbon challenges. Founded by <strong class="text-brand-400">Blandine</strong>, a Civil Engineer and Sustainable Renewable Energy Systems Engineer, the company fuses structural engineering rigor with Aether AI predictive intelligence.
+                    </p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                        <div class="glass-panel p-4 rounded-xl border border-slate-800">
+                            <div class="text-brand-400 font-bold text-sm mb-1">Sustainable Energy Systems</div>
+                            <p class="text-xs text-slate-400">Specializing in Renewable Energy Systems, Environmental Engineering, Microgrids, and Building Performance Optimization across tropical and temperate climates.</p>
+                        </div>
+                        <div class="glass-panel p-4 rounded-xl border border-slate-800">
+                            <div class="text-cyber-blue font-bold text-sm mb-1">Civil Engineering & Infrastructure</div>
+                            <p class="text-xs text-slate-400">Technical site leadership, analytical civil rigor, structural feasibility, and turn-key EPC execution capability.</p>
+                        </div>
+                    </div>
+
+                    <p class="text-sm text-slate-400 italic border-l-2 border-brand-500 pl-4 py-1">
+                        "Our vision is to empower African commercial assets and global infrastructure with autonomous AI engineering—moving from diagnosis directly to turn-key net-zero execution."
+                    </p>
+                </div>
+
+                <!-- Right Visual Card -->
+                <div class="lg:col-span-5">
+                    <div class="relative">
+                        <div class="absolute -inset-1 rounded-3xl bg-gradient-to-r from-brand-500 to-cyber-blue opacity-30 blur-xl"></div>
+                        <div class="relative glass-panel p-8 rounded-3xl border border-slate-800 space-y-6">
+                            <div class="flex items-center gap-4">
+                                <div class="w-16 h-16 rounded-2xl bg-slate-800 border border-slate-700 flex items-center justify-center text-brand-400 font-bold text-2xl">
+                                    B
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-white">Blandine</h3>
+                                    <p class="text-xs text-brand-400 font-medium">Founder & Managing Director</p>
+                                    <p class="text-[11px] text-slate-400">Civil & Sustainable Renewable Energy Systems Engineer</p>
+                                </div>
+                            </div>
+
+                            <div class="space-y-3 pt-4 border-t border-slate-800 text-xs">
+                                <div class="flex items-center justify-between text-slate-300">
+                                    <span class="text-slate-400">Direct Phone:</span>
+                                    <a href="tel:+447353825093" class="font-semibold text-brand-400 hover:underline">+44 7353 825093</a>
+                                </div>
+                                <div class="flex items-center justify-between text-slate-300">
+                                    <span class="text-slate-400">Direct Email:</span>
+                                    <a href="mailto:fublum70@gmail.com" class="font-semibold text-brand-400 hover:underline">fublum70@gmail.com</a>
+                                </div>
+                                <div class="flex items-center justify-between text-slate-300">
+                                    <span class="text-slate-400">Core Focus:</span>
+                                    <span class="font-semibold text-white">Africa & Global Net Zero</span>
+                                </div>
+                                <div class="flex items-center justify-between text-slate-300">
+                                    <span class="text-slate-400">Company:</span>
+                                    <span class="font-semibold text-white">Fublum Global Nexus Ltd</span>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-2 pt-2">
+                                <a href="mailto:fublum70@gmail.com" class="py-2.5 rounded-xl bg-brand-500 hover:bg-brand-400 text-slate-950 font-semibold text-xs flex items-center justify-center gap-1.5 transition">
+                                    <i data-lucide="mail" class="w-3.5 h-3.5"></i>
+                                    <span>Email Us</span>
+                                </a>
+                                <a href="tel:+447353825093" class="py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-semibold text-xs flex items-center justify-center gap-1.5 transition">
+                                    <i data-lucide="phone" class="w-3.5 h-3.5 text-brand-400"></i>
+                                    <span>Call Direct</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Investor & Strategic Partner Hub -->
+    <section id="investors" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-cyber-blue font-semibold text-sm tracking-wider uppercase">Venture & Impact Opportunities</span>
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-white mt-2 mb-4">Investment & Strategic Growth</h2>
+                <p class="text-slate-400">Fublum Global Nexus Ltd is positioned at the nexus of climate-tech SaaS, African infrastructure expansion, and green capital deployment.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                <div class="glass-panel p-8 rounded-3xl border border-slate-800 space-y-4">
+                    <div class="w-12 h-12 rounded-2xl bg-brand-500/10 text-brand-400 flex items-center justify-center">
+                        <i data-lucide="trending-up" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">African Climate Momentum</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Rapid commercial real estate growth across African urban centers combined with high solar yield creates massive ROI opportunities for autonomous digital energy management and solar microgrids.
+                    </p>
+                </div>
+
+                <div class="glass-panel p-8 rounded-3xl border border-slate-800 space-y-4">
+                    <div class="w-12 h-12 rounded-2xl bg-cyber-blue/10 text-cyber-blue flex items-center justify-center">
+                        <i data-lucide="layers" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Scalable SaaS & EPC Revenue</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Recurring software subscriptions for energy telemetry and predictive digital twins, plus project origination fees on turn-key solar and energy efficiency installations.
+                    </p>
+                </div>
+
+                <div class="glass-panel p-8 rounded-3xl border border-slate-800 space-y-4">
+                    <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center">
+                        <i data-lucide="globe" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Global Footprint</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Built for seamless deployment across African markets (West, East, Southern, North, Central) while remaining fully compatible with UK, European, and North American energy standards.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Pitch Brief Banner CTA -->
+            <div class="glass-panel p-8 sm:p-12 rounded-3xl border border-brand-500/30 text-center relative overflow-hidden">
+                <div class="relative z-10 max-w-2xl mx-auto space-y-6">
+                    <h3 class="text-2xl sm:text-3xl font-extrabold text-white">Interested in Early-Stage Co-Investment or Pilot Partnership?</h3>
+                    <p class="text-sm text-slate-300">Request access to our venture pitch deck, financial projections, and platform technical architecture for African and global deployments.</p>
+                    <div class="flex flex-wrap items-center justify-center gap-4 pt-2">
+                        <button onclick="openPitchBriefModal()" class="px-8 py-3.5 rounded-xl bg-brand-500 hover:bg-brand-400 text-slate-950 font-bold text-sm shadow-lg shadow-brand-500/20 transition">
+                            Download Venture Prospectus
+                        </button>
+                        <button onclick="openDemoModal()" class="px-8 py-3.5 rounded-xl glass-panel hover:bg-slate-800 text-white font-semibold text-sm border border-slate-700 transition">
+                            Schedule Founder Call
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 border-t border-slate-900 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6 border-b border-slate-800 pb-8 mb-8">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-brand-500 to-cyber-blue p-0.5">
+                        <div class="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
+                            <i data-lucide="zap" class="w-4 h-4 text-brand-400"></i>
+                        </div>
+                    </div>
+                    <span class="text-lg font-bold text-white">Fublum Global Nexus Ltd</span>
+                </div>
+
+                <div class="flex flex-wrap items-center gap-6 text-xs text-slate-400">
+                    <a href="tel:+447353825093" class="hover:text-brand-400 transition flex items-center gap-1">
+                        <i data-lucide="phone" class="w-3 h-3"></i> +44 7353 825093
+                    </a>
+                    <a href="mailto:fublum70@gmail.com" class="hover:text-brand-400 transition flex items-center gap-1">
+                        <i data-lucide="mail" class="w-3 h-3"></i> fublum70@gmail.com
+                    </a>
+                    <a href="#platform" class="hover:text-white transition">Platform</a>
+                    <a href="#africa-focus" class="hover:text-white transition">Africa Focus</a>
+                    <a href="#simulator" class="hover:text-white transition">AI Simulator</a>
+                    <a href="#founder" class="hover:text-white transition">Leadership</a>
+                    <a href="#investors" class="hover:text-white transition">Investors</a>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+                <p>© 2026 Fublum Global Nexus Ltd. All rights reserved. Net Zero Infrastructure & AI Energy Intelligence.</p>
+                <p class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-brand-400"></span>
+                    Headquartered in Glasgow & London, UK • Dedicated Operations across Africa & Globally
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL 1: Book Audit / Contact Modal -->
+    <div id="demoModal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md hidden flex items-center justify-center p-4">
+        <div class="glass-panel max-w-lg w-full p-8 rounded-3xl border border-slate-800 relative space-y-6">
+            <button onclick="closeDemoModal()" class="absolute top-6 right-6 text-slate-400 hover:text-white">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+
+            <div>
+                <span class="text-xs font-mono text-brand-400 uppercase">Fublum Global Nexus</span>
+                <h3 class="text-2xl font-bold text-white mt-1">Book an AI Net Zero Audit</h3>
+                <p class="text-xs text-slate-400 mt-1">Connect with our engineering team to ingest and audit your building portfolio in Africa or globally.</p>
+            </div>
+
+            <form onsubmit="handleFormSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-medium text-slate-300 mb-1">Full Name</label>
+                    <input type="text" required placeholder="e.g. Kwame Mensah / Sarah Jenkins" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-500">
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-slate-300 mb-1">Work Email</label>
+                    <input type="email" required placeholder="k.mensah@company.com" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-500">
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-slate-300 mb-1">Country / Region & Portfolio</label>
+                    <input type="text" required placeholder="e.g. Nigeria / Kenya / Commercial Real Estate Hub" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-500">
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-slate-300 mb-1">Building Details / Key Interest</label>
+                    <textarea rows="2" placeholder="e.g. 30,000 m² office facility requiring solar PV & battery storage." class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-500"></textarea>
+                </div>
+                <button type="submit" class="w-full py-3 rounded-xl bg-brand-500 text-slate-950 font-bold text-sm hover:bg-brand-400 transition shadow-lg shadow-brand-500/20">
+                    Submit Audit Request
+                </button>
+            </form>
+            <div id="formToast" class="hidden text-xs text-center p-3 bg-brand-500/20 text-brand-300 rounded-xl border border-brand-500/40">
+                ✓ Thank you! Your request has been logged. Our engineering team will contact you shortly.
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 2: Pitch Brief Modal -->
+    <div id="pitchModal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md hidden flex items-center justify-center p-4">
+        <div class="glass-panel max-w-xl w-full p-8 rounded-3xl border border-slate-800 relative space-y-6">
+            <button onclick="closePitchBriefModal()" class="absolute top-6 right-6 text-slate-400 hover:text-white">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+
+            <div>
+                <span class="text-xs font-mono text-cyber-blue uppercase">Venture Prospectus Summary</span>
+                <h3 class="text-2xl font-bold text-white mt-1">Fublum Global Nexus Pitch Summary</h3>
+            </div>
+
+            <div class="space-y-3 text-xs text-slate-300 max-h-80 overflow-y-auto pr-2">
+                <div class="p-3 bg-slate-900 rounded-xl border border-slate-800">
+                    <strong class="text-brand-400 block mb-1">Company & Strategic Scope:</strong>
+                    Fublum Global Nexus Ltd — Decarbonizing Africa & Global Infrastructure via Aether AI.
+                </div>
+                <div class="p-3 bg-slate-900 rounded-xl border border-slate-800">
+                    <strong class="text-cyber-blue block mb-1">Founder Profile:</strong>
+                    Blandine — Civil Engineer & Sustainable Engineer (Renewable Energy Systems and the Environment).
+                </div>
+                <div class="p-3 bg-slate-900 rounded-xl border border-slate-800">
+                    <strong class="text-amber-400 block mb-1">Direct Contact:</strong>
+                    Phone: +44 7353 825093 | Email: fublum70@gmail.com
+                </div>
+                <div class="p-3 bg-slate-900 rounded-xl border border-slate-800">
+                    <strong class="text-emerald-400 block mb-1">Target Markets:</strong>
+                    West Africa, East Africa, Southern Africa, North Africa, Central Africa, plus UK/Europe & Global Commercial/Industrial Estates.
+                </div>
+            </div>
+
+            <button onclick="downloadPitchBriefText()" class="w-full py-3 rounded-xl bg-gradient-to-r from-brand-500 to-cyber-blue text-slate-950 font-bold text-sm transition shadow-lg">
+                Copy Full Investor Pitch Text
+            </button>
+            <div id="pitchCopyToast" class="hidden text-xs text-center p-2 text-brand-300">
+                ✓ Pitch summary copied to clipboard!
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Logic -->
+    <script>
+        let energyChart = null;
+
+        window.onload = function() {
+            lucide.createIcons();
+            initChart();
+            updateSimulation();
+
+            document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+                const menu = document.getElementById('mobileMenu');
+                menu.classList.toggle('hidden');
+            });
+        };
+
+        function scrollToSimulator() {
+            document.getElementById('simulator').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function initChart() {
+            const ctx = document.getElementById('energyChart').getContext('2d');
+            
+            energyChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Yr 1', 'Yr 2', 'Yr 3', 'Yr 4', 'Yr 5', 'Yr 6', 'Yr 7', 'Yr 8', 'Yr 9', 'Yr 10'],
+                    datasets: [
+                        {
+                            label: 'Business as Usual Energy Cost (£/$)',
+                            data: [38000, 41000, 44500, 48000, 52000, 56500, 61000, 66000, 71500, 77000],
+                            borderColor: '#f43f5e',
+                            backgroundColor: 'rgba(244, 63, 94, 0.05)',
+                            borderWidth: 2,
+                            fill: true,
+                            tension: 0.3
+                        },
+                        {
+                            label: 'Aether AI Net Zero Energy Cost (£/$)',
+                            data: [18000, 16500, 15000, 14200, 13500, 12800, 12000, 11500, 11000, 10500],
+                            borderColor: '#22c55e',
+                            backgroundColor: 'rgba(34, 197, 94, 0.15)',
+                            borderWidth: 3,
+                            fill: true,
+                            tension: 0.3
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        x: { grid: { color: 'rgba(255, 255, 255, 0.05)' }, ticks: { color: '#94a3b8', font: { size: 10 } } },
+                        y: { grid: { color: 'rgba(255, 255, 255, 0.05)' }, ticks: { color: '#94a3b8', font: { size: 10 }, callback: function(val) { return '£' + (val/1000) + 'k'; } } }
+                    }
+                }
+            });
+        }
+
+        function loadPreset(type) {
+            const assetType = document.getElementById('assetType');
+            const areaInput = document.getElementById('areaInput');
+            const billInput = document.getElementById('billInput');
+            const kwhInput = document.getElementById('kwhInput');
+            const region = document.getElementById('locationRegion');
+
+            if (type === 'office') {
+                assetType.value = 'Commercial Office Tower';
+                areaInput.value = 25000;
+                billInput.value = 32000;
+                kwhInput.value = 128000;
+            } else if (type === 'industrial') {
+                assetType.value = 'Industrial Logistics Park';
+                areaInput.value = 55000;
+                billInput.value = 65000;
+                kwhInput.value = 280000;
+            } else if (type === 'campus') {
+                assetType.value = 'University Campus';
+                areaInput.value = 80000;
+                billInput.value = 95000;
+                kwhInput.value = 420000;
+            }
+
+            updateSimulation();
+        }
+
+        function updateSimulation() {
+            const assetType = document.getElementById('assetType').value;
+            const locationRegion = document.getElementById('locationRegion').value;
+            const area = parseInt(document.getElementById('areaInput').value);
+            const bill = parseInt(document.getElementById('billInput').value);
+            const kwh = parseInt(document.getElementById('kwhInput').value);
+            const hours = document.getElementById('operatingHours').value;
+            const hvac = document.getElementById('hvacType').value;
+
+            document.getElementById('areaVal').innerText = area.toLocaleString() + ' m²';
+            document.getElementById('billVal').innerText = '£' + bill.toLocaleString();
+            document.getElementById('kwhVal').innerText = kwh.toLocaleString() + ' kWh';
+
+            // Selected Interventions
+            const intSolar = document.getElementById('intSolar').checked;
+            const intBattery = document.getElementById('intBattery').checked;
+            const intLighting = document.getElementById('intLighting').checked;
+            const intWater = document.getElementById('intWater').checked;
+            const intHvac = document.getElementById('intHvac').checked;
+            const intSmart = document.getElementById('intSmart').checked;
+
+            let totalSavingsPct = 0;
+            if (intSolar) totalSavingsPct += 24;
+            if (intBattery) totalSavingsPct += 14;
+            if (intLighting) totalSavingsPct += 10;
+            if (intWater) totalSavingsPct += 8;
+            if (intHvac) totalSavingsPct += 18;
+            if (intSmart) totalSavingsPct += 12;
+
+            // Cap maximum savings
+            totalSavingsPct = Math.min(totalSavingsPct, 82);
+
+            // Regional climate calculation adjustments
+            const isAfrica = locationRegion.includes('Africa');
+            let solarNote = isAfrica ? ' (High Solar Irradiance Belt)' : '';
+
+            let carbonIntensityFactor = isAfrica ? 0.68 : 0.48; // African grid diesel/fossil mix factor
+            let annualCarbon = Math.round((kwh * 12 * carbonIntensityFactor) / 1000);
+            let wastePct = Math.min(Math.round(28 + (kwh / area) * 1.6), 62);
+
+            document.getElementById('repKwh').innerText = kwh.toLocaleString() + ' kWh/mo';
+            document.getElementById('repWaste').innerText = wastePct + '% Waste';
+            document.getElementById('repCarbon').innerText = annualCarbon.toLocaleString() + ' tCO₂e/yr';
+
+            // Payback calculation
+            let annualBill = bill * 12;
+            let annualSavings = annualBill * (totalSavingsPct / 100);
+            let estimatedCapex = (area * 30) * (totalSavingsPct / 100);
+            let paybackYears = annualSavings > 0 ? (estimatedCapex / annualSavings).toFixed(1) : '2.2';
+
+            document.getElementById('resPayback').innerText = paybackYears + ' Years';
+
+            let carbonReductionPct = Math.min(Math.round(totalSavingsPct * 1.12), 94);
+            let renewableContribution = intSolar ? (isAfrica ? 58 : 42) : 12;
+
+            document.getElementById('roadmapStatement').innerHTML = 
+                `"For this <strong>${assetType}</strong> in <strong>${locationRegion}</strong>, implementing selected interventions reduces annual energy bill by <strong class="text-brand-400">${totalSavingsPct}%</strong>, increases clean renewable power contribution to <strong class="text-cyber-blue">${renewableContribution}%</strong>${solarNote}, and cuts emissions by <strong class="text-emerald-400">${carbonReductionPct}%</strong>, generating an estimated annual financial saving of <strong>£${Math.round(annualSavings).toLocaleString()}</strong>."`;
+
+            renderLoadBreakdown(hvac, assetType, locationRegion);
+            updateChartData(annualBill, totalSavingsPct);
+        }
+
+        function renderLoadBreakdown(hvac, assetType, region) {
+            const grid = document.getElementById('loadBreakdownGrid');
+            const isAfrica = region.includes('Africa');
+
+            let coolingShare = isAfrica ? '42%' : '32%';
+            let lightingShare = '22%';
+            let equipmentShare = '20%';
+            let genFuelShare = isAfrica ? '16%' : '26%';
+
+            grid.innerHTML = `
+                <div class="p-2 bg-slate-900 rounded-xl border border-slate-800">
+                    <span class="text-slate-400 block text-[10px]">HVAC & Cooling</span>
+                    <strong class="text-brand-400 font-bold">${coolingShare}</strong>
+                </div>
+                <div class="p-2 bg-slate-900 rounded-xl border border-slate-800">
+                    <span class="text-slate-400 block text-[10px]">Lighting & Power</span>
+                    <strong class="text-cyber-blue font-bold">${lightingShare}</strong>
+                </div>
+                <div class="p-2 bg-slate-900 rounded-xl border border-slate-800">
+                    <span class="text-slate-400 block text-[10px]">Motors / Machinery</span>
+                    <strong class="text-purple-400 font-bold">${equipmentShare}</strong>
+                </div>
+                <div class="p-2 bg-slate-900 rounded-xl border border-slate-800">
+                    <span class="text-slate-400 block text-[10px]">${isAfrica ? 'Diesel Gen Fuel' : 'Grid Baseload'}</span>
+                    <strong class="text-amber-400 font-bold">${genFuelShare}</strong>
+                </div>
+            `;
+        }
+
+        function updateChartData(annualBill, savingsPct) {
+            if (!energyChart) return;
+
+            let bauData = [];
+            let netZeroData = [];
+
+            let baseBau = annualBill;
+            let baseSavings = annualBill * (1 - (savingsPct / 100));
+
+            for (let i = 0; i < 10; i++) {
+                bauData.push(Math.round(baseBau * Math.pow(1.05, i)));
+                netZeroData.push(Math.round(baseSavings * Math.pow(0.98, i)));
+            }
+
+            energyChart.data.datasets[0].data = bauData;
+            energyChart.data.datasets[1].data = netZeroData;
+            energyChart.update();
+        }
+
+        function downloadPitchBriefText() {
+            const pitchText = `
+FUBLUM GLOBAL NEXUS LTD | AETHER AI NET ZERO PLATFORM
+-------------------------------------------------------------------
+Strategic Mission: Decarbonizing Africa & Global Built Infrastructure
+Founder: Blandine (Civil Engineer, Sustainable Renewable Energy Systems Engineer)
+Direct Contact: +44 7353 825093 | fublum70@gmail.com
+Core Engine: Aether AI Digital Energy Engineer for Buildings
+
+REGIONAL SCOPE:
+- West Africa (Nigeria, Ghana, Senegal, Ivory Coast...)
+- East Africa (Kenya, Ethiopia, Tanzania, Uganda...)
+- Southern Africa (South Africa, Namibia, Botswana, Zambia...)
+- North Africa (Egypt, Morocco, Tunisia, Algeria...)
+- Central Africa (DR Congo, Cameroon, Gabon...)
+- Global Regions (UK, Europe, North America, Middle East, Asia-Pacific)
+
+AETHER AI CAPABILITIES:
+1. Data Ingestion: Satellite thermal imaging, local tariffs, solar radiation, smart meters.
+2. AI Diagnostic: Energy waste calculation, fuel offset diagnostic, carbon footprint.
+3. Prescriptive Net-Zero Roadmap: High-yield solar PV, battery microgrids, HVAC optimization.
+4. Turn-Key Execution: Civil engineering design, green financing (ESCOs), EPC delivery, continuous IoT monitoring.
+
+Contact Founder Directly: +44 7353 825093 | fublum70@gmail.com
+            `.trim();
+
+            const textarea = document.createElement('textarea');
+            textarea.value = pitchText;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+
+            const toast = document.getElementById('pitchCopyToast');
+            toast.classList.remove('hidden');
+        }
+
+        function openDemoModal() { document.getElementById('demoModal').classList.remove('hidden'); }
+        function closeDemoModal() { document.getElementById('demoModal').classList.add('hidden'); document.getElementById('formToast').classList.add('hidden'); }
+        function openPitchBriefModal() { document.getElementById('pitchModal').classList.remove('hidden'); }
+        function closePitchBriefModal() { document.getElementById('pitchModal').classList.add('hidden'); document.getElementById('pitchCopyToast').classList.add('hidden'); }
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            document.getElementById('formToast').classList.remove('hidden');
+            setTimeout(() => { closeDemoModal(); }, 2500);
+        }
+    </script>
+</body>
+</html>
